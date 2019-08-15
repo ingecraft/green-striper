@@ -8,6 +8,7 @@ class Customer(Base):
     __tablename__ = 'customer'
 
     id = Column(Integer, primary_key=True)
+    sripe_id = Column(String, index = True)
     name = Column(String)
     surname = Column(String)
     email = Column(String)
@@ -17,6 +18,8 @@ class Customer(Base):
 class Charge(Base):
     __tablename__ = 'charge'
     
+    id = Column(Integer, primary_key=True)
+    sripe_id = Column(String, index = True)
     date_created = Column(Date)
     amount = Column(Float)
     is_recurring = Column(Boolean)
