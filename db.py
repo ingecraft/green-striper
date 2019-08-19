@@ -19,5 +19,3 @@ def initiate_db(config):
     db_conn = DBConnector(config)
     db_conn.base.metadata.create_all(db_conn.engine)
 
-        
-
