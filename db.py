@@ -6,14 +6,23 @@ from models import Base
 class DBConnector():
    
     def __init__(self, config):
-        self.engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
-        self.base = Base
+        self._engine = create_engine(config.SQLALCHEMY_DATABASE_URI)
+        self._base = Base
         Session = sessionmaker(bind=self.engine)
         self._session = Session()
 
     @property
     def session(self):
         return self._session 
+
+    @property
+    def engine(self):
+        return self._engine
+
+    @property
+    def base(self):
+        return self._base
+
 
 def initiate_db(config):
     db_conn = DBConnector(config)
