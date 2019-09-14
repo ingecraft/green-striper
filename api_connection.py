@@ -23,5 +23,6 @@ class StripeAPI():
             end_date=default_end_date):
         unix_start = aux.datetime_to_unix(start_date)
         unix_end = aux.datetime_to_unix(end_date)
-         
-
+        customers = self.api_client.Customer.list(created={'lt':unix_end, \
+                'gt': unix_start})
+        return customers
